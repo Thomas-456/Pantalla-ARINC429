@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f4fa;
+}
+.selector-container {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+label {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+select {
+  font-size: 1em;
+  padding: 8px 12px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+#subselector-presion,
+#subselector-temperatura {
+  display: none;
+}
+</style>
+</head>
+<body>
+
+<div class="selector-container">
+  <label for="instrumento">Seleccione instrumento:</label>
+  <select id="instrumento" onchange="
+    document.getElementById('subselector-presion').style.display = this.value === 'presion' ? 'block' : 'none';
+    document.getElementById('subselector-temperatura').style.display = this.value === 'temperatura' ? 'block' : 'none';
+  ">
+    <option value="">-- Seleccione --</option>
+    <option value="presion">Instrumentos de presión</option>
+    <option value="temperatura">Instrumentos de temperatura</option>
+    <option value="tacometro">Tacómetro</option>
+    <option value="flujo">Flujo de combustible</option>
+    <option value="cantidad">Cantidad de combustible</option>
+  </select>
+  
+  <div id="subselector-presion">
+    <label for="presion">Seleccione tipo de presión:</label>
+    <select id="presion">
+      <option>Presión de aceite</option>
+      <option>Presión de entrada</option>
+      <option>Presión de combustible</option>
+    </select>
+  </div>
+  
+  <div id="subselector-temperatura">
+    <label for="temperatura">Seleccione tipo de temperatura:</label>
+    <select id="temperatura">
+      <option>Temperatura de aceite</option>
+      <option>Temperatura del carburador</option>
+      <option>Temperatura de gases de escape</option>
+    </select>
+  </div>
+</div>
